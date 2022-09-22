@@ -2,7 +2,7 @@
   <v-form v-model="valid">
     <v-container>
       <v-row>
-        <v-col cols="12" md="4">
+        <v-col cols="12" xl="4">
           <v-text-field
             v-model="post.firstname"
             :rules="nameRules"
@@ -12,7 +12,7 @@
           ></v-text-field>
         </v-col>
 
-        <v-col cols="12" md="4">
+        <v-col cols="12" xl="4">
           <v-text-field
             v-model="post.lastname"
             :rules="nameRules"
@@ -22,7 +22,7 @@
           ></v-text-field>
         </v-col>
 
-        <v-col cols="12" md="4">
+        <v-col cols="12" xl="4">
           <v-text-field
             v-model="post.email"
             :rules="emailRules"
@@ -31,7 +31,21 @@
           ></v-text-field>
         </v-col>
       </v-row>
-      <v-btn @click="addPost" color="primary">Submit</v-btn>
+      <v-hover>
+        <v-btn
+          :disabled="
+            !!!post.firstname ||
+            !!!post.lastname ||
+            !!!post.email ||
+            !/.+@.+/.test(post.email)
+          "
+          variant="elevated"
+          @click="addPost"
+          color="primary"
+        >
+          Add post
+        </v-btn>
+      </v-hover>
     </v-container>
   </v-form>
 </template>
@@ -41,7 +55,7 @@ import { defineComponent } from "vue";
 export default defineComponent({
   name: "FormComp",
   data: () => ({
-    valid: false,
+    valid: true,
     nameRules: [
       (v: string) => !!v || "Name is required",
       (v: string) => v.length <= 10 || "Name must be less than 10 characters",
@@ -51,6 +65,7 @@ export default defineComponent({
       (v: string) => /.+@.+/.test(v) || "E-mail must be valid",
     ],
     post: {
+      id: Date.now(),
       firstname: "",
       lastname: "",
       email: "",
@@ -59,6 +74,12 @@ export default defineComponent({
   methods: {
     addPost() {
       this.$emit("addpost", this.post);
+      this.post = {
+        id: 0,
+        firstname: "",
+        lastname: "",
+        email: "",
+      };
     },
   },
 });

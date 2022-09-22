@@ -10,7 +10,7 @@
       <router-link to="/test">Test</router-link>
     </li>
     <li @click="litem = 3" :class="`n-list-item ${litem === 3 && 'active'}`">
-      <router-link to="/crud">Crud</router-link>
+      <router-link to="/todo">Todo</router-link>
     </li>
   </ul>
 </template>

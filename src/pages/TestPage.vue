@@ -1,15 +1,11 @@
 <template>
   <div>
-
+    <div>Test page</div>
   </div>
 </template>
 
 <script lang="ts">
-  export default {
-    
-  }
+export default {};
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

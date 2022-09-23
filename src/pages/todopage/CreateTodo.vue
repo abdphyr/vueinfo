@@ -53,7 +53,7 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 export default defineComponent({
-  name: "FormComp",
+  name: "CreateTodo",
   data: () => ({
     valid: true,
     nameRules: [

@@ -1,12 +1,12 @@
 <template>
   <div class="propscomp">
-    <div class="title">Bu child component</div>
-    <button @click="changeColor">customevent</button>
-    <ul>
-      <li v-for="lang in langs" v-bind:key="langs.indexOf(lang)">
+    <div class="title">This is child component</div>
+    <v-btn @click="changeColor">change parent color</v-btn>
+    <v-list>
+      <v-list-item v-for="(lang, i) in langs" :key="i">
         {{ lang }}
-      </li>
-    </ul>
+      </v-list-item>
+    </v-list>
   </div>
 </template>
 
@@ -14,7 +14,7 @@
 import { defineComponent, PropType } from "vue";
 
 export default defineComponent({
-  name: "PropsVue",
+  name: "GetProps",
   props: {
     langs: {
       type: Array as PropType<Array<string>>,
@@ -27,8 +27,7 @@ export default defineComponent({
   },
   methods: {
     changeColor() {
-      //this.change();
-      this.$emit("chcolor", "red");
+      this.change();
     },
   },
 });
@@ -37,6 +36,7 @@ export default defineComponent({
 <style lang="scss" scoped>
 .propscomp {
   background-color: #ccc;
+  border: 1px solid red;
 }
 .title {
   color: red;

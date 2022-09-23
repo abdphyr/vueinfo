@@ -1,14 +1,14 @@
 <template>
   <div>
-    <form-comp @addpost="addPost" />
-    <post-list :posts="posts" />
+    <create-todo @addpost="addPost" />
+    <list-todo :posts="posts" />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import FormComp from "./FormCopm.vue";
-import PostList from "./PostList.vue";
+import CreateTodo from "./CreateTodo.vue";
+import ListTodo from "./ListTodo.vue";
 interface IPost {
   id: number;
   firstname: string;
@@ -31,8 +31,8 @@ export default defineComponent({
     };
   },
   components: {
-    FormComp,
-    PostList,
+    CreateTodo,
+    ListTodo,
   },
   methods: {
     addPost(post: IPost) {

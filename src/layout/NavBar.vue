@@ -7,7 +7,7 @@
       <router-link to="/vuetify">Vuetify</router-link>
     </li>
     <li @click="litem = 2" :class="`n-list-item ${litem === 2 && 'active'}`">
-      <router-link to="/test">Test</router-link>
+      <router-link to="/props">Props</router-link>
     </li>
     <li @click="litem = 3" :class="`n-list-item ${litem === 3 && 'active'}`">
       <router-link to="/todo">Todo</router-link>
